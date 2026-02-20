@@ -1,20 +1,76 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Arglut</title>
-    <style>
-        body{margin:0;display:flex;flex-direction:column;justify-content:center;align-items:center;height:100vh;background:black;font-family:Arial}
-        h1{color:white;font-size:10vw;letter-spacing:10px;text-transform:uppercase;margin-bottom:0}
-        h2{color:white;font-size:5vw;letter-spacing:5px;text-transform:uppercase;margin-top:0}
-    </style>
+<meta charset="UTF-8">
+<title>Arglut ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: black;
+  overflow: hidden;
+}
+
+h1, h2 {
+  color: white;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-10vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.heart {
+  position: fixed;
+  font-size: 20px;
+  animation: fall linear forwards;
+}
+</style>
 </head>
+
 <body>
-    <h1 id="title"></h1>
-    <h2 id="subtitle"></h2>
-    
-    <script>
-        document.getElementById('title').textContent = atob('QXJnbHV0');
-        document.getElementById('subtitle').textContent = atob('RVZBIg==');
-    </script>
+
+<h1 id="title"></h1>
+<h2 id="subtitle"></h2>
+
+<script>
+document.getElementById('title').textContent = atob("QXJnbHV2");
+document.getElementById('subtitle').textContent = atob("RVZBIG==");
+
+const colors = ["red","pink","purple","blue","cyan","lime","yellow","orange","white"];
+
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.classList.add("heart");
+  heart.innerHTML = "❤️";
+
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+  heart.style.fontSize = (15 + Math.random() * 30) + "px";
+  heart.style.animationDuration = (3 + Math.random() * 5) + "s";
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 8000);
+}
+
+setInterval(createHeart, 200);
+</script>
+
 </body>
 </html>
